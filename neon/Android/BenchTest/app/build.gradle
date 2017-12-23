@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 25
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    defaultConfig {
+        applicationId "com.ctliu3.bench.hpc.benchest"
+        minSdkVersion 21
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        ndk{
+            abiFilter "armeabi-v7a"
+        }
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path '../../ndk/jni/Android.mk'
+        }
+    }
+
+    buildTypes {
+        debug{
+            debuggable true
+            jniDebuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BenchTest</string>
+    <string name="start_test">Load Image</string>
+    <string name="benchmark">benchmark</string>
+</resources>
